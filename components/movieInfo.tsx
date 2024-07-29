@@ -19,6 +19,10 @@ export default async function MovieInfo({ id }: { id: string }) {
         <h2 className="text-xl font-bold">{m.title}</h2>
         <h3 className="text-lg text-yellow-500">★{m.vote_average}</h3>
         <p className="text-gray-700">{m.overview}</p>
+        <br />
+        <p>
+          <a href="">Homepage ➡</a>
+        </p>
       </div>
     </div>
   );

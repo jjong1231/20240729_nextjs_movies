@@ -11,10 +11,10 @@ export default function MovieCard({ title, id, poster_path }: MovieProps) {
     <div>
       <li
         key={id}
-        className="bg-neutral-500 text-white border rounded overflow-hidden shadow"
+        className="bg-neutral-500 text-white border rounded overflow-hidden shadow hover:scale-105 duration-500"
       >
         <Link href={`/movies/${id}`}>
-          <img src={poster_path} alt={title} className="w-full h-auto" />
+          <img src={poster_path} alt={title} className="w-full" />
           <h3 className="text-xs text-center p-1">{title}</h3>
         </Link>
       </li>
