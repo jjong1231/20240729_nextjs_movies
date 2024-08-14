@@ -16,6 +16,7 @@ export default async function page() {
       {/* <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4 max-w-6xl w-full gap-2"> */}
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 content-around">
         {movies.map((m) => (
+          // <li>{m.title}</li>
           <MovieCard
             key={m.id}
             id={m.id}

@@ -13,9 +13,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "mysql2": "^3.11.0",
+    "net": "^1.0.2",
     "next": "^14.2.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tls": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "22.0.0",
