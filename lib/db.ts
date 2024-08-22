@@ -26,6 +26,9 @@ const db = await mysql.createConnection({
   database: process.env.DB_NAME,
   keepAliveInitialDelay: 10000, // 0 by default.
   enableKeepAlive: true, // false by default.
+  // autocommit: true,
+  use_pure: true,
+  reconnect: true, //자동 재연결 옵션
 });
 
 export default db;

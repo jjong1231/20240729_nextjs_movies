@@ -39,11 +39,11 @@ export default async function Index({ users }) {
     <div>
       <h1>Index Home</h1>
       <ul>
-        {/* {user.map((m, i) => (
+        {user.map((m, i) => (
           <li key={m.id}>
-            {m.name} // {m.idx}
+            {m.no} // {m.name} // {m.age}
           </li>
-        ))} */}
+        ))}
       </ul>
     </div>
   );

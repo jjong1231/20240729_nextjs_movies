@@ -6,14 +6,17 @@ import Navi_sub from "./navi_sub";
 import Nav_slot from "./nav_slot";
 
 export default function Nav() {
-  const [navSubView, setNavSubView] = useState("false");
-
   const navi = [
     { name: "Home", link: "/" },
     {
       name: "Test",
       link: "/test",
-      add: [{ name: "테스트", link: "/test/db_proc" }],
+      add: [
+        { name: "테스트", link: "/test" },
+        { name: "테스트2", link: "/test2" },
+        { name: "테스트3", link: "/test3" },
+        { name: "db_proc", link: "/db_proc" },
+      ],
     },
     { name: "AboutMe", link: "/aa" },
     {

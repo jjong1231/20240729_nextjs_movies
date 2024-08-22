@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Alert_red from "../../../components/alert_red"; //알림창 레드
-import { db_insert } from "../../api/db_select";
 
 export default function page() {
   const [alert_show, set_alert_show] = useState(false);
@@ -24,7 +23,7 @@ export default function page() {
       return;
     }
     //데이터 처리
-    const aa = db_insert();
+    // const aa = db_insert();
     console.log("aaaa");
   }
 
