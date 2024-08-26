@@ -16,8 +16,15 @@ export default async function insertData(D) {
 
   const values = Object.values(D.data);
   //prettier-ignore
-  const rs = await db.query( "insert into " + TB + " (mdno," + col + ", regdate) values (3,?, ?, now())", values );
 
+  // try{
+  const rs = await db.query( "insert into " + TB + " (mdno," + col + ", regdate) values (3,?, ?, now())", values );
   console.log("============", rs);
+  const rsData = { rs: "ok", data: rs };
   return rs;
+  // }catch(e){
+  //   const rsData = {rs:'err', sql:e.sql, errMsg: e.sqlMessage}
+  //   // console.log("============ err ", e, rsData);
+  //   return rsData;
+  // }
 }

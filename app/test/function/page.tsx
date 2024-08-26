@@ -1,5 +1,5 @@
 import React from "react";
-import selectData from "../api/select";
+import selectData from "../../api/select";
 
 export default async function Page() {
   const wh = [];

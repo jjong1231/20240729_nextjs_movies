@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Alert_red(v) {
-  console.log(JSON.stringify(v));
+export default function Alert_red(props: { msg: string; isShow: boolean }) {
+  // console.log(JSON.stringify(v));
+
+  const [alert_show, set_alert_show] = useState(false);
+  const [alert_red, set_alert_red] = useState("");
+
+  //알림창에서 닫기버튼 실행
+  const alert_close = () => {
+    set_alert_show(false);
+  };
+
   return (
-    <div className="relative">
+    <div>
       <div className="fixed w-full h-full top-0 left-0 bg-slate-500 opacity-75 z-40"></div>
       <div
         id="alert-additional-content-2"
-        className="relative w-[100%] p-4 mb-4 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800 z-50"
+        className="fixed w-3/4 p-4 mb-4 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800 z-50"
         role="alert"
       >
         <div className="flex items-center">
@@ -23,12 +32,12 @@ export default function Alert_red(v) {
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium">This is a danger alert</h3>
         </div>
-        <div className="mt-2 mb-4 text-sm text-left">* {v.alertMsg}</div>
+        <div className="mt-2 mb-4 text-sm text-left">* {props.msg}</div>
         <div className="flex">
           <button
             type="button"
             className="text-white bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-            onClick={v.alertClose}
+            onClick={alert_close}
           >
             닫기
           </button>
