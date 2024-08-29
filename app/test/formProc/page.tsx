@@ -1,23 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Alert_red from "../../components/alert_red";
-// import insertData from "../api/insert";
+// import AlertRed from "../../components/alert_red";
+import { AlertGreen, AlertRed, AlertYellow } from "../../../components/alert";
 
-export default function page() {
+export default function FormProc() {
   // function insert(D) {
   //   const rs = insertData(D);
   //   return rs;
   // }
 
   const [alert_show, set_alert_show] = useState(false);
-  const [alert_red, set_alert_red] = useState("");
   const [alert_msg, set_alert_msg] = useState("");
 
   const D = { TB: "MEDIA", data: { md_name: "이거슨3", memo: "메모래요~3" } };
-  // const rs = insert(D);
-
-  // console.log("완료! ", rs);
-
   const [formData, setFormData] = useState({});
   useEffect(() => {}, []);
   const fn_change = (e) => {
@@ -33,9 +28,10 @@ export default function page() {
     if (Object.keys(formData).length < 1) {
       set_alert_msg("빈값있음!");
       set_alert_show(true);
-      Alert_red(alert_msg);
+      AlertRed(alert_msg);
       return;
     }
+    AlertRed(alert_msg);
   };
   //알림창에서 닫기버튼 실행
   const alert_close = () => {
@@ -53,13 +49,13 @@ export default function page() {
           <input type="text" name="memo" onChange={fn_change} />
         </li>
         <li>
-          <button className="proc" onClick={fn_proc}>
+          <button className="proc btnSubmit" onClick={fn_proc}>
             저장
           </button>
         </li>
       </ul>
       {alert_show ? (
-        <Alert_red alertMsg={alert_msg} alertClose={alert_close} />
+        <AlertRed alertMsg={alert_msg} alertClose={alert_close} />
       ) : null}
     </div>
   );

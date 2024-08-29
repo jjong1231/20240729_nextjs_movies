@@ -6,9 +6,14 @@ interface subProps {
   link: string;
 }
 export default function Navi_sub({ name, link }: subProps) {
+  const hide_subMenu = () => {
+    this.querySelector("div").classList.remove("sub_show");
+  };
   return (
     <div className="bg-red-400 rounded-lg my-1">
-      <Link href={link}>{name}</Link>
+      <Link href={link} onClick={hide_subMenu}>
+        {name}
+      </Link>
     </div>
   );
 }

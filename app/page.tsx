@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
 import mediaList from "./api/mediaList";
+
+import useStore from "./useStore";
 
 // export const API_URL = "https://www.adplex.co.kr/_pjh/t2.php";
 // export const API_URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
@@ -10,12 +14,15 @@ import mediaList from "./api/mediaList";
 //   return json;
 // }
 
-export default async function Index({ users }) {
-  const db_select = { table: "MEDIA", data: [{ mdno: 1 }] };
-  const user = await mediaList(db_select);
+// export default async function Index({ users }) {
+export default function Index({ users }) {
+  const { count, increment, decrement } = useStore();
+
+  // const db_select = { table: "MEDIA", data: [{ mdno: 1 }] };
+  // const user = await mediaList(db_select);
   // const user = await fetchUser();
   // console.log(JSON.stringify(user));
-  console.log("stringify => ", JSON.stringify(user));
+  // console.log("stringify => ", JSON.stringify(user));
 
   // const data = await Insert();
   // console.log(data);
@@ -39,12 +46,14 @@ export default async function Index({ users }) {
     <div>
       <h1>Index Home</h1>
       <ul>
-        {user.map((m, i) => (
+        {/* {user.map((m, i) => (
           <li key={m.id}>
             {m.no} // {m.name} // {m.age}
           </li>
-        ))}
+        ))} */}
       </ul>
+      <p></p>
+      <h2>Count: {count}</h2>
     </div>
   );
 }
