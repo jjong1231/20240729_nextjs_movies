@@ -4,18 +4,32 @@ import { AlertRed, AlertGreen, AlertYellow } from "../../../components/alert";
 
 export default function Alert() {
   const [alert_show, set_alert_show] = useState(false);
-  const [alert_red, set_alert_red] = useState("");
+  const [alertRed, setAlertRed] = useState(false);
+  const [alertYellow, setAlertYellow] = useState(false);
+  const [alertGreen, setAlertGreen] = useState(false);
   const [alert_msg, set_alert_msg] = useState("");
 
   //알림창에서 닫기버튼 실행
   const alert_close = () => {
-    set_alert_show(false);
+    setAlertRed(false);
+    setAlertYellow(false);
+    setAlertGreen(false);
   };
 
-  const alertShow = () => {
-    set_alert_msg("빈값있음!");
-    set_alert_show(true);
-    AlertRed(alert_msg);
+  const alertShow = (e, c) => {
+    console.log("c", c);
+    set_alert_msg(c + " 메세지!");
+    switch (c) {
+      case "red":
+        setAlertRed(true);
+        break;
+      case "green":
+        setAlertGreen(true);
+        break;
+      default:
+        setAlertYellow(true);
+        break;
+    }
   };
 
   return (
@@ -24,16 +38,31 @@ export default function Alert() {
       <hr />
       <ul>
         <li>
-          <button onClick={alertShow}>빨간 경고창</button>
-          {alert_show ? (
+          <button onClick={(e) => alertShow(e, "red")}>빨간 경고창</button>
+          {alertRed ? (
             <AlertRed alertMsg={alert_msg} alertClose={alert_close} />
           ) : null}
         </li>
         <li>
-          <button onClick={AlertYellow}>노랑 경고창</button>
+          <button onClick={(e) => alertShow(e, "yellow")}>노랑 경고창</button>
+          {alertYellow ? (
+            <AlertYellow alertMsg={alert_msg} alertClose={alert_close} />
+          ) : null}
         </li>
         <li>
-          <button onClick={AlertGreen}>녹색 경고창</button>
+          <button onClick={(e) => alertShow(e, "green")}>녹색 경고창</button>
+          {alertGreen ? (
+            <AlertGreen alertMsg={alert_msg} alertClose={alert_close} />
+          ) : null}
+        </li>
+        <li>
+          {/* <AlertRed alertMsg={alert_msg} alertClose={alert_close} /> */}
+        </li>
+        <li>
+          {/* <AlertYellow alertMsg={alert_msg} alertClose={alert_close} /> */}
+        </li>
+        <li>
+          {/* <AlertGreen alertMsg={alert_msg} alertClose={alert_close} /> */}
         </li>
       </ul>
     </div>

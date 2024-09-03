@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 // import AlertRed from "../../components/alert_red";
 import { AlertGreen, AlertRed, AlertYellow } from "../../../components/alert";
+import "../../../css/formTest.css";
 
 export default function FormProc() {
   // function insert(D) {
@@ -41,7 +42,7 @@ export default function FormProc() {
   return (
     <div>
       <h1>db_proc 데이처 처리</h1>
-      <ul>
+      <ul className="formTest">
         <li>
           <input type="text" name="md_name" onChange={fn_change} />
         </li>

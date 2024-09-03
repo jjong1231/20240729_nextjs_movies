@@ -12,6 +12,7 @@ export default function Nav() {
       name: "Test",
       link: "/test",
       add: [
+        { name: "alertColor", link: "/test/alertColor" },
         { name: "count", link: "/test/count" },
         { name: "alert", link: "/test/alert" },
         { name: "static", link: "/test/static" },

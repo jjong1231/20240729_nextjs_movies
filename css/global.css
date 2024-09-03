@@ -49,6 +49,13 @@ input {
   display: block;
 }
 
+button {
+  margin: 3px;
+  padding: 3px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
 .btnSubmit {
   margin: 5px;
   padding: 0 5px;
