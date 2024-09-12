@@ -3,15 +3,15 @@ import selectData from "../../api/select";
 
 export default async function Page() {
   const wh = [];
-  wh.push({ col: "md_name", where: "=", val: "이름2" }); //컬럼명, 조건, 값
-  wh.push({ col: "memo", where: "=", val: "2222" }); //컬럼명, 조건, 값
+  // wh.push({ col: "name", where: "=", val: "" }); //컬럼명, 조건, 값
+  // wh.push({ col: "id", where: "=", val: "" }); //컬럼명, 조건, 값
 
   // const [data, setData] = useState([]);
 
   // const data = ["err", "ddd"];
 
   // useEffect(() => {
-  const data = await selectData("MEDIA", wh);
+  const data = await selectData("MEMBER", wh);
   console.log("stringify ===============> ", JSON.stringify(data));
   // setData([
   //   { mdno: 10, md_name: "미디어10", memo: "메모11", regdate: "2024.08.19" },
@@ -42,10 +42,10 @@ export default async function Page() {
           {/* {JSON.stringify(data)} */}
           {data.map((m) => {
             return (
-              <li key={m.mdno}>
+              <li key={m.mno}>
                 <div className="flex space-x-4 w-full">
-                  <div className="text-center w-full">{m.md_name}</div>
-                  <div className="text-center w-full">{m.memo}</div>
+                  <div className="text-center w-full">{m.id}</div>
+                  <div className="text-center w-full">{m.name}</div>
                   <div className="text-center w-full">{m.regdate}</div>
                 </div>
               </li>

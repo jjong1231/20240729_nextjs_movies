@@ -8,20 +8,20 @@ export default function page() {
   const age = "age";
 
   useEffect(() => {
-    const api = "/api/useState";
+    const api_url = "/api/useState";
     const fetchData = async () => {
       try {
-        const res = await fetch(api, {
+        const res = await fetch(api_url, {
           method: "POST",
           cache: "no-store",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            TB: "MEDIA",
-            wh_col: ["md_name"],
-            wh_then: ["like"],
-            wh_val: ["%이름%"],
+            TB: "MEMBER",
+            // wh_col: ["name"],
+            // wh_then: ["like"],
+            // wh_val: ["%이름%"],
           }),
         });
         const json = await res.json();
@@ -43,8 +43,8 @@ export default function page() {
       <ul>
         {data
           ? data.map((v) => (
-              <li key={v.mdno} onClick={isClick} mdno={v.mdno}>
-                {v.md_name} / {v.memo} / {v.regdate}
+              <li key={v.mno} onClick={isClick} mno={v.dno}>
+                {v.id} / {v.name} / {v.regdate}
               </li>
             ))
           : "Loading.."}

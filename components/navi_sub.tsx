@@ -7,7 +7,7 @@ interface subProps {
 }
 export default function Navi_sub({ name, link }: subProps) {
   const hide_subMenu = () => {
-    this.querySelector("div").classList.remove("sub_show");
+    document.querySelector(".sub_show").classList.remove("sub_show");
   };
   return (
     <div className="bg-red-400 rounded-lg my-1">

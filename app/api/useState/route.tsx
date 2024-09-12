@@ -7,11 +7,11 @@ export async function POST(req) {
   // console.log("=========> post_data ", post_data, post_data.wh_col);
 
   const TB = post_data.TB;
-  const wh_col = post_data.wh_col;
-  const wh_then = post_data.wh_then;
-  const wh_val = post_data.wh_val;
+  const wh_col = post_data.wh_col || false;
+  const wh_then = post_data.wh_then || false;
+  const wh_val = post_data.wh_val || false;
   const qry =
-    "select mdno, md_name,memo,DATE_FORMAT(regdate, '%Y-%m-%d %h:%i:%s') regdate from " +
+    "select mno, name,id,DATE_FORMAT(regdate, '%Y-%m-%d %h:%i:%s') regdate from " +
     TB;
   let add_where = "";
   if (wh_col.length > 0) {
@@ -26,10 +26,11 @@ export async function POST(req) {
         "'";
     });
   }
-  // console.log("----------------> add_where", add_where, wh_col.length);
+  console.log("----------------> add_where", add_where, wh_col.length);
 
   const [rows] = await db.query(
-    "select mdno, md_name,memo,DATE_FORMAT(regdate, '%Y-%m-%d %h:%i:%s') regdate from MEDIA" +
+    "select mno, name, id, DATE_FORMAT(regdate, '%Y-%m-%d %h:%i:%s') regdate from " +
+      TB +
       add_where
   );
   // const res = NextResponse.json({ no: 1221, name: "테스트111" });

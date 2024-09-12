@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Navi_sub from "./navi_sub";
 import Nav_slot from "./nav_slot";
+import Link from "next/link";
 
 export default function Nav() {
   const navi = [
@@ -12,17 +12,22 @@ export default function Nav() {
       name: "Test",
       link: "/test",
       add: [
+        { name: "cover", link: "/test/cover" },
         { name: "alertColor", link: "/test/alertColor" },
         { name: "count", link: "/test/count" },
         { name: "alert", link: "/test/alert" },
         { name: "static", link: "/test/static" },
         { name: "useState", link: "/test/useState" },
         { name: "function", link: "/test/function" },
-        { name: "용주스타일", link: "/test/test2" },
+        { name: "용주코딩", link: "/test/test2" },
         { name: "폼전송", link: "/test/formProc" },
       ],
     },
     { name: "AboutMe", link: "/aa" },
+    {
+      name: "Member",
+      link: "/member",
+    },
     {
       name: "Media",
       link: "/media",
