@@ -10,11 +10,11 @@ export default function page() {
   const [lastPage, setLastPage] = useState(1); //마지막페이지
   const [keywords, setKeywords] = useState(""); //검색어
   const listRows = 10; //1페이지 게시물수
-  const api_url = "/api/mediaList";
-  const fetchData = async (getPage = 1) => {
+  const api_url = "/api/memberList";
+  const fetchData = async (getPage, keywords) => {
     try {
-      const inputBox = document.getElementById("keywords");
-      const keywords = inputBox.value.trim();
+      // const inputBox = document.getElementById("keywords");
+      // const keywords = inputBox.value.trim();
       const res = await fetch(api_url, {
         method: "POST",
         cache: "no-store",
@@ -38,7 +38,7 @@ export default function page() {
     }
   };
   useEffect(() => {
-    fetchData(1);
+    fetchData(1, "");
     const inputBox = document.getElementById("keywords");
     inputBox.addEventListener("keyup", (e) => {
       if (e.key == "Enter") {
@@ -56,7 +56,7 @@ export default function page() {
     sessionStorage.setItem(location.pathname, go);
 
     setPage(go);
-    fetchData(go);
+    fetchData(go, "");
   };
 
   //키워드 검색

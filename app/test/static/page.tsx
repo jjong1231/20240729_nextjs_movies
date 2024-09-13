@@ -1,16 +1,15 @@
 import React from "react";
 
-const api = "http://localhost:3000/api/static";
-async function getData() {
-  const res = await fetch(api, {
-    method: "GET",
-    cache: "no-store",
-  });
-  const json = res.json();
-  return json;
-}
-
 export default async function page() {
+  const api = "http://localhost:3000/api/static";
+  async function getData() {
+    const res = await fetch(api, {
+      method: "GET",
+      cache: "no-store",
+    });
+    const json = res.json();
+    return json;
+  }
   const data = await getData();
   return (
     <div>

@@ -1,28 +1,33 @@
 "use client";
-import React, { useEffect } from "react";
-import selectData from "../../api/select";
+import { useEffect, useState } from "react";
 
-export default async function page({ params: { id } }) {
-  // const page = ({ params: { id } }) => {
-  const col = "mno, id, name, DATE_FORMAT(regdate, '%y-%m-%d %T') regdate",
-    where = "mno=" + id,
-    limit = "";
+export default function page({ params: v }) {
+  // console.log("======>", v);
+  // const mno = v.id;
 
-  const data = await selectData("MEMBER", col, where, limit);
-  const v = data[0];
+  const [mem, setMem] = useState(false);
 
-  const handleClick = () => {
-    alert("Button clicked!");
+  const api = "http://localhost:3000/api/test";
+  const getData = async () => {
+    const res = await fetch(api, {
+      method: "POST",
+      cache: "no-store",
+      body: JSON.stringify({ mno: v.id }),
+    });
+    const json = await res.json();
+    console.log("===================>", json);
+    setMem(json);
+    // return json;
   };
-
-  const aa = () => {
-    alert(1);
-  };
-
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div>
       <h1>회원상세</h1>
-      {/* {id}/{JSON.stringify(data)} */}
+      {JSON.stringify(mem)}
+      {/* {process.env.DB_HOST} */}
+      {mem ? 222 : 11}
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <tbody className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -30,26 +35,26 @@ export default async function page({ params: { id } }) {
               <th scope="col" className="px-8 py-3 dark:bg-gray-800">
                 ID
               </th>
-              <td className="px-8 py-4">{v.id}</td>
+              <td className="px-8 py-4">{}</td>
             </tr>
             <tr>
               <th scope="col" className="px-8 py-3 dark:bg-gray-800">
                 이름
               </th>
-              <td className="px-8 py-4">{v.name}</td>
+              <td className="px-8 py-4">{}</td>
             </tr>
             <tr>
               <th scope="col" className="px-8 py-3 dark:bg-gray-800">
                 등록일
               </th>
-              <td className="px-8 py-4">{v.regdate}</td>
+              <td className="px-8 py-4">{}</td>
             </tr>
           </tbody>
         </table>
         <button
           type="button"
           className="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          onClick={() => alert(1)}
+          onClick={() => history.back()}
         >
           목록
         </button>

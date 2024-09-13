@@ -12,6 +12,7 @@ export default function Nav() {
       name: "Test",
       link: "/test",
       add: [
+        { name: "db post", link: "/test/post" },
         { name: "cover", link: "/test/cover" },
         { name: "alertColor", link: "/test/alertColor" },
         { name: "count", link: "/test/count" },

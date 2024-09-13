@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import MediaList from "../api/mediaList";
 
@@ -20,7 +21,7 @@ export default async function page() {
           ))
         : false}
       <ul>
-        <li></li>
+        <li onClick={() => alert(22)}>1111</li>
       </ul>
     </div>
   );

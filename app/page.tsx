@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React from "react";
 import mediaList from "./api/mediaList";
 
@@ -23,9 +23,7 @@ export default function Index({ users }) {
         ))} */}
       </ul>
 
-      <button className="m-4 border p-2" onClick={aa}>
-        버튼
-      </button>
+      <button className="m-4 border p-2">버dd튼</button>
       <hr />
 
       <p></p>
