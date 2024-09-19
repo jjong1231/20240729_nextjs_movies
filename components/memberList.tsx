@@ -41,7 +41,7 @@ const MemberList = ({ data }: dataType) => {
                   <td className="px-6 py-4">{v.name}</td>
                   <td className="px-6 py-4">{v.regdate}</td>
                   <td className="px-6 py-4 text-right">
-                    <Link href={`/member/${v.mno}`}>
+                    <Link href={`/member/info/${v.mno}`}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

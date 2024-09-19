@@ -11,7 +11,10 @@ export default function page() {
   const [keywords, setKeywords] = useState(""); //검색어
   const listRows = 10; //1페이지 게시물수
   const api_url = "/api/memberList";
+
   const fetchData = async (getPage, keywords) => {
+    console.log("fetchData this_page", getPage);
+
     try {
       // const inputBox = document.getElementById("keywords");
       // const keywords = inputBox.value.trim();
@@ -28,7 +31,7 @@ export default function page() {
         }),
       });
       const json = await res.json();
-
+      setPage(getPage);
       setData(json.list);
       const lastPage = Math.ceil(json.total / listRows);
       // console.log(json.total, listRows, lastPage);
@@ -38,7 +41,12 @@ export default function page() {
     }
   };
   useEffect(() => {
-    fetchData(1, "");
+    const this_page = sessionStorage.getItem(location.pathname)
+      ? parseInt(sessionStorage.getItem(location.pathname))
+      : 1;
+    sessionStorage.setItem(location.pathname, this_page);
+    console.log("this_page", this_page);
+    fetchData(this_page, "");
     const inputBox = document.getElementById("keywords");
     inputBox.addEventListener("keyup", (e) => {
       if (e.key == "Enter") {
@@ -53,7 +61,7 @@ export default function page() {
   const goPage = (go) => {
     console.log(location.pathname);
     //뒤로가기시
-    sessionStorage.setItem(location.pathname, go);
+    sessionStorage.setItem(location.pathname, parseInt(go));
 
     setPage(go);
     fetchData(go, "");

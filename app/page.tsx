@@ -1,6 +1,5 @@
 // "use client";
 import React from "react";
-import mediaList from "./api/mediaList";
 
 import useStore from "./useStore";
 import Test from "../components/test";

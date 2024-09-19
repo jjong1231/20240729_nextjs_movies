@@ -44,7 +44,7 @@ const Pagenation = ({ page, last, goPage }: pageNav) => {
     "flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white";
   const forData = [];
   for (let i = start; i <= end; i++) forData.push(i);
-
+  console.log("page", page, "last", last);
   const prePage = () => {
     if (page == start) {
       //첫페이지 알림
@@ -65,11 +65,27 @@ const Pagenation = ({ page, last, goPage }: pageNav) => {
     }
   };
 
+  const goStartEnd = (num) => {
+    goPage(num);
+  };
+
   return (
     <div>
       {/* 현재:{now} / 시작:{start} / 끝:{end} / 마지막:{last} */}
       <nav aria-label="Page navigation example">
         <ul className="inline-flex -space-x-px text-sm mt-4">
+          {start > 1 ? (
+            <li>
+              <button
+                className="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                onClick={() => goStartEnd(1)}
+              >
+                start
+              </button>
+            </li>
+          ) : (
+            ""
+          )}
           <li>
             <button
               className="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -95,6 +111,18 @@ const Pagenation = ({ page, last, goPage }: pageNav) => {
               Next
             </button>
           </li>
+          {page < last - 2 ? (
+            <li>
+              <button
+                className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                onClick={() => goStartEnd(last)}
+              >
+                end
+              </button>
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
       </nav>
       {alertView ? (
